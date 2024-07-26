@@ -100,19 +100,7 @@ map sp <C-w>t<C-w>K
 map tn :tabe<CR>
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
-"color"
-set termguicolors
-let g:gruvbox_italic=1
-colorscheme gruvbox
-set background=dark    
-nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
-nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
-nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
 
-nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
-nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
-nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
-noremap <silent> <Leader><CR> :call gruvbox#hls_hide()<CR>
 "NERDTree"
 nnoremap <F2> :NERDTree<CR> 
 nnoremap <leader>f :NERDTreeFind<CR>
@@ -163,9 +151,30 @@ let g:SignatureMap = {
 set rtp+=~/.fzf
 noremap <C-f> :FZF<CR> 
 noremap <C-g> :Ag<CR>
-
+noremap <C-h> :History<CR>
 "ctrlp(custom)"
 noremap <c-p> :FZF ~/<CR>
+
+"vim-plug"
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
+Plug 'junegunn/fzf.vim'
+call plug#end()
+"color"
+autocmd vimenter * nested colorscheme gruvbox
+set termguicolors
+let g:gruvbox_italic=1
+colorscheme gruvbox
+set background=dark
+nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+noremap <silent> <Leader><CR> :call gruvbox#hls_hide()<CR>
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")

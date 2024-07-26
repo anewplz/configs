@@ -118,17 +118,31 @@ if ! shopt -oq posix; then
   fi
 fi
 # the fuck
-eval "$(thefuck --alias fuck)"
+#eval "$(thefuck --alias fuck)"
+
+#bat
+alias "bat=batcat"
+
 #fzf
+#eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (rougify {}  || highlight -O ansi -l {} || coderay {} || cat {}) 2> /dev/null | head -500"'
+#export FZF_DEFAULT_COMMAND='fdfind'
+#export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (rougify {}  || highlight -O ansi -l {} || coderay {} || cat {}) 2> /dev/null | head -500"'
+#export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || bat --style=numbers --color=always --line-range :500 {}"'
+export FZF_DEFAULT_OPTS='--preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always --paging=never {} || highlight -O ansi -l {} || code ray {} || cat {}) 2> /dev/null | head -500"'
+
+_fzf_compgen_dir() {
+ fdfind --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+ #_fzf_compgen_dir() {
+ #  fdfind --type d --hidden --follow --exclude ".git" . "$1"
+ #}
 export FZF_COMPLETION_TRIGGER='\' 
 export FZF_TMUX_HEIGHT='80%'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
-#bat
-alias "bat=batcat"
 
 export NEMU_HOME=/home/ambiguous/ysyx-workbench/nemu
 export AM_HOME=/home/ambiguous/ysyx-workbench/abstract-machine
