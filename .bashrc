@@ -123,6 +123,12 @@ fi
 #bat
 alias "bat=batcat"
 
+#Neovim
+alias vi='nvim'
+
+#musicfox
+alias m='musicfox'
+
 #fzf
 #eval "$(fzf --bash)"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
@@ -142,7 +148,11 @@ export FZF_COMPLETION_TRIGGER='\'
 export FZF_TMUX_HEIGHT='80%'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+#yazi
+export PATH="$PATH:/home/ambiguous/yazi/target/release"
+
 
 
 export NEMU_HOME=/home/ambiguous/ysyx-workbench/nemu
 export AM_HOME=/home/ambiguous/ysyx-workbench/abstract-machine
+. "$HOME/.cargo/env"
